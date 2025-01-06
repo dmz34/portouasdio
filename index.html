@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Portofolio Dhiya Muthi</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>Dhiya Muthi Zafarani</h1>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="about">
+        <h2>About me</h2>
+        <p>Hello, My name is Dhiya Muthi. Now I'm studying at Pamulang University.
+            My hobby is modifying my favorite motorbike.
+        </p>
+    </section>
+
+    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3965.3764550177584!2d106.7313208!3d-6.3452714!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69ef77956ae9a9%3A0x68c63c11c8d2c0e9!2sUniversitas%20Pamulang!5e0!3m2!1sid!2sid!4v1736133704078!5m2!1sid!2sid" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <section id="projects">
+        <h2>Projects</h2>
+        <div class="filter-buttons">
+            <button class="filter-btn" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="web">Web</button>
+            <button class="filter-btn" data-filter="design">Design</button>
+            <button class="filter-btn" data-filter="game">Game</button>
+        </div>
+        <div class="project-grid">
+            <div class="project web">
+                <h3>Tugas 1</h3>
+                <p>Design kalkulator sederhana menggunakan HTML, CSS, dan JavaScript. <a href="kumpul/kalkulator.html" target="_blank">Try it here</a>.</p>
+                <img src="kumpul/5.png" alt="Kalkulator" width="500">
+            </div>
+            <div class="project design">
+                <h3>Tugas 2</h3>
+                <p>Form login website. <a href="kumpul/FormLogin.html" target="_blank">View it here</a>.</p>
+                <img src="kumpul/6.png" alt="Form Login" width="500">
+            </div>
+            <div class="project web">
+                <h3>Project 3</h3>
+                <p>Dashboard website. <a href="kumpul/dashboard.html" target="_blank">Check it out</a>.</p>
+                <img src="kumpul/77.png" alt="Dashboard" width="500">
+            </div>
+            <div class="project game">
+                <h3>Project 4</h3>
+                <p>Simple Snake Game. <a href="kumpul/ular.html" target="_blank">Play here</a>.</p>
+                <img src="kumpul/ular.png" alt="Snake Game" width="500">
+            </div>
+            <div class="project design">
+                <h3>Project 5</h3>
+                <p>Diagram tahunan dalam penjualan. <a href="kumpul/diagram.html" target="_blank">View it here</a>.</p>
+                <img src="kumpul/diagram.png" alt="Diagram" width="500">
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <p>Email: <a href="mailto:dhiyadioo@gmail.com">dhiyadioo@gmail.com</a></p>
+        <p>Follow me on social media:</p>
+        <ul>
+            <li>
+                <a href="https://www.instagram.com/dhiya_muthi_z/?hl=id" target="_blank">
+                    <img src="kumpul/instagram.png" alt="Instagram" class="social-icon" width="20" height="20"> @dhiya_muthi_z
+                </a>
+            </li>
+        </ul>
+        <h3>Location</h3>
+        <div id="map" style="width:100%;height:400px;"></div>
+    </section>
+
+    <footer>
+        <p>My Simple Portfolio <br> Thank you for viewing my portfolio</p>
+        <p>&copy; 2024</p>
+    </footer>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Filter functionality
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const projects = document.querySelectorAll('.project');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const filter = button.getAttribute('data-filter');
+                projects.forEach(project => {
+                    if (filter === 'all' || project.classList.contains(filter)) {
+                        project.style.display = 'block';
+                    } else {
+                        project.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Google Maps
+        function initMap() {
+            const location = { lat: -6.256, lng: 106.618 }; // Example coordinates
+            const map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 14,
+                center: location
+            });
+            const marker = new google.maps.Marker({ position: location, map: map });
+        }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
+</body>
+</html>
